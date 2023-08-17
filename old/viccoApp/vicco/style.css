@@ -1,0 +1,218 @@
+:root {
+	--f-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+	--f-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+	--f-size: 1.6rem;
+	--f-line: 1.5;
+}
+* {
+	box-sizing: border-box;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+}
+html {
+	font-size: 62.5%;
+	scroll-behavior: smooth;
+}
+*:focus {
+	outline: 2px solid var(--c-accent);
+	outline-offset: 2px;
+}
+body {
+	background-color: var(--c-body);
+	color: var(--c-text);
+	font-family: var(--f-sans);
+	font-size: var(--f-size);
+	line-height: var(--f-line);
+	max-width: 76.8rem;
+	padding: 0 2rem;
+	margin: 4rem auto;
+}
+img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+a {
+	color: var(--c-accent);
+}
+a:is(:hover, :focus) {
+	background-color: var(--c-accent);
+	color: var(--c-box);
+	text-decoration: none;
+}
+h1 {
+	line-height: 1;
+}
+label {
+	color: var(--c-accent);
+	font-weight: bold;
+	display: block;
+	padding-bottom: 0.5rem;
+}
+:is(code, input, button) {
+	font-size: var(--f-size);
+}
+code {
+	background-color: var(--c-body);
+	font-family: var(--f-mono);
+}
+input {
+	background-color: var(--c-box);
+	font-family: var(--f-sans);
+	width: 100%;
+	height: 3.5rem;
+	padding: 0 1rem;
+	border: 2px solid var(--c-accent);
+	border-radius: 0.5rem;
+}
+textarea {
+	background-color: var(--c-box);
+	font-family: var(--f-mono);
+	font-size: var(--f-size);
+	line-height: var(--f-line);
+	display: block;
+	width: 100%;
+	height: 10rem;
+	padding: 0;
+	margin-bottom: 2rem;
+	border: 0;
+	resize: none;
+}
+textarea:focus {
+	outline: none;
+}
+:is(button, .button) {
+	background-color: var(--c-accent);
+	color: var(--c-box);
+	font-family: var(--f-sans);
+	font-weight: bold;
+	line-height: 1;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-decoration: none;
+	height: 3.5rem;
+	padding: 0 1rem;
+	margin: 0;
+	border: 0;
+	border-radius: 0.5rem;
+	cursor: pointer;
+	touch-action: manipulation;
+	user-select: none;
+	-webkit-user-select: none;
+}
+:is(button, .button):hover {
+	text-decoration: underline;
+}
+summary {
+	color: var(--c-accent);
+	font-weight: bold;
+	padding: 0.5rem 0;
+}
+:is(summary:hover, summary:focus) {
+	text-decoration: underline;
+	outline: 0;
+	cursor: pointer;
+}
+header {
+	margin-bottom: 2rem;
+}
+@media (min-width: 768px) {
+	header {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-end;
+		gap: 4rem;
+	}
+}
+header :where(h1, p) {
+	margin: 0;
+}
+header a {
+	color: var(--c-text);
+	text-decoration: none;
+}
+.search {
+	display: flex;
+	flex-shrink: 0;
+}
+@media (max-width: 767px) {
+	.search {
+		margin-top: 2rem;
+	}
+}
+.search input {
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+.search button {
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+}
+.box {
+	background-color: var(--c-box);
+	padding: 3rem 3rem 2rem;
+	margin-bottom: 2rem;
+	border-radius: 1rem;
+}
+@media (max-width: 767px) {
+	.box {
+		padding: 2rem;
+		margin-right: -2rem;
+		margin-left: -2rem;
+		border-radius: 0;
+	}
+}
+.box > *:first-child {
+	margin-top: 0;
+}
+.box > *:last-child {
+	margin-bottom: 0;
+}
+.post-text {
+	font-family: var(--f-mono);
+}
+.post-sketch {
+	margin-bottom: 1rem;
+}
+.post footer a {
+	text-decoration: none;
+}
+.post-meta {
+	flex-direction: column;
+}
+@media (min-width: 768px) {
+	.post-meta {
+		flex-direction: row;
+		align-items: end;
+		justify-content: space-between;
+	}
+}
+@media (min-width: 768px) {
+	.site-meta {
+		display: flex;
+		justify-content: space-between;
+	}
+}
+.login div {
+	margin-bottom: 2rem;
+}
+.panel-meta {
+	justify-content: space-between;
+}
+.row {
+	display: flex;
+	gap: 1.5rem;
+}
+nav {
+	justify-content: center;
+}
+#sketch {
+	background-color: var(--c-box);
+	display: block;
+	width: 668px;
+	height: 501px;
+	margin-bottom: 1rem;
+	border: 2px solid var(--c-accent);
+}

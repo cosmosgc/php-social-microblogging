@@ -1,0 +1,23 @@
+
+<form class="box panel" action="{{SCRIPTNAME}}" method="post">
+	<input type="hidden" name="postid" id="postid" value="{{POSTID}}">
+	<input type="hidden" name="postsketch" id="postsketch">
+
+	<div>
+		<textarea id="postcontent" name="postcontent" placeholder="Start typing &hellip;" aria-label="Post content" spellcheck="false" autofocus>{{POSTCONTENT}}</textarea>
+
+		<details>
+			<summary>Sketch</summary>
+			<canvas width="668" height="501" id="sketch" data-sketch="{{SKETCHDATA}}"></canvas>
+		</details>
+	</div>
+
+	<div class="panel-meta row">
+		<button type="submit" id="submit" name="submit">Publish</button>
+
+		<div class="row">
+			<button type="reset" id="reset">Reset</button>
+			<button type="submit" name="logout">Logout</button>
+		</div>
+	</div>
+</form>

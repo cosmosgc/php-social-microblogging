@@ -1,0 +1,69 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    flex-direction: column;
+    position: relative; /* Add this for the pseudo-element */
+}
+
+/* Animated background gradient */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-image: linear-gradient(to bottom, #363e6b, #9176ff);
+    -webkit-animation: bgAnim 15s ease infinite;
+    animation: bgAnim 15s ease infinite; /* Change duration or animation as desired */
+}
+
+@keyframes bgAnim {
+    0% {
+        background-position: 0 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0 50%;
+    }
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 26px;
+    box-shadow: 9px 9px 10px 0px rgb(0 0 0 / 28%);
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+div{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+/* Animation to make the form fade in */
+form.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+

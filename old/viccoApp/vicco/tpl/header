@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="{{SITELANG}}">
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="{{SITEDESC}}">
+
+	<title>{{SITENAME}}</title>
+
+	<link href="{{PAGEHOME}}?feed" type="application/atom+xml" title="{{SITENAME}} feed" rel="alternate">
+	<link rel="stylesheet" type="text/css" href="{{DATAPATH}}{{CSS}}" media="screen">
+
+	<style>:root { --c-body: {{BODYCOLOR}}; --c-box: {{BOXCOLOR}}; --c-text: {{TEXTCOLOR}}; --c-accent: {{ACCENTCOLOR}}; }</style>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/Blog">
+
+<header>
+	<div>
+		<h1 itemprop="name"><a href="{{PAGEHOME}}">{{SITENAME}}</a></h1>
+		<p itemprop="description">{{SITEDESC}}</p>
+	</div>
+
+	<form class="search" action="{{SCRIPTNAME}}" method="get" role="search">
+		<input type="text" name="s" aria-label="Search terms">
+		<button type="submit">Search</button>
+	</form>
+</header>
+
+<main>

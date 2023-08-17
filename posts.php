@@ -1,0 +1,76 @@
+<?php
+// Database connection
+require_once("config.php");
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Get the page number from the request, default to 1 if not provided
+$pageNumber = isset($_GET['page']) ? intval($_GET['page']) : 1;
+
+// Calculate the offset for pagination
+$itemsPerPage = 10; // Change this number based on how many records you want to show per page
+$offset = ($pageNumber - 1) * $itemsPerPage;
+
+// Prepare the base SQL query
+$sql = "SELECT microblogs.*, users.username, users.avatar, users.nickname, users.id AS user_id, users.post_theme FROM microblogs 
+        JOIN users ON microblogs.user_id = users.id";
+
+// Check for user search parameter
+if (isset($_GET['user'])) {
+    $userSearch = $conn->real_escape_string($_GET['user']);
+    $sql .= " WHERE users.username = '$userSearch'";
+}
+
+// Check for string search parameter
+if (isset($_GET['search'])) {
+    $stringSearch = $conn->real_escape_string($_GET['search']);
+    $searchCondition = isset($_GET['user']) ? "AND" : "WHERE";
+    $sql .= " $searchCondition microblogs.content LIKE '%$stringSearch%'";
+}
+
+// Check for responses parameter
+if (isset($_GET['responses']) && filter_var($_GET['responses'], FILTER_VALIDATE_BOOLEAN)) {
+    $LastsearchCondition = isset($searchCondition) ? "AND" : "WHERE";
+    $sql .= " $LastsearchCondition microblogs.parent_microblog_id IS NOT NULL";
+}
+
+// Check for both parameter
+if (isset($_GET['both']) && filter_var($_GET['both'], FILTER_VALIDATE_BOOLEAN)) {
+    // No additional WHERE clause needed
+} else {
+    // Default behavior, show only parent posts
+    $sql .= " AND microblogs.parent_microblog_id IS NULL";
+}
+
+// Add ORDER BY and LIMIT clauses for pagination
+$sql .= " ORDER BY microblogs.id DESC LIMIT $itemsPerPage OFFSET $offset";
+
+$result = $conn->query($sql);
+
+$data = array();
+
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $data[] = array(
+            'username' => $row['username'],
+            'content' => $row['content'],
+            'embed_file' => $row['embed_file'],
+            'avatar' => $row['avatar'],
+            'id' => $row['id'],
+            'created_at' => $row['created_at'],
+            'nickname' => $row['nickname'],
+            'post_theme' => $row['post_theme']
+        );
+    }
+}
+
+$conn->close();
+
+// Return the data as JSON
+header('Content-Type: application/json');
+echo json_encode($data);
+?>

@@ -1,0 +1,6 @@
+
+	<form class="admin row" action="{{SCRIPTNAME}}" method="post">
+		<input type="hidden" name="postid" value="{{POSTID}}">
+		<a class="button" href="?edit={{POSTID}}">Edit</a>
+		<button type="submit" class="delete" name="delete">Delete</button>
+	</form>
